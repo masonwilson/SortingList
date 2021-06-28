@@ -7,9 +7,11 @@
 #include <fstream>
 #include <string>
 #include <vector>
+//#include <bits/stdc++.h>
+#include <algorithm>
 using namespace std;
 
-bool readFile(string filename, vector<string> v);
+bool readFile(string filename, vector<string>& v);
 
 int main(int argc, char*argv[]){
 	//read in file 
@@ -22,13 +24,18 @@ int main(int argc, char*argv[]){
 		return 1;
 	}
 
-
+	sort(words.begin(), words.end());
+	cout << "Sorted List: " << endl;
+	//cout << words[0] << endl;
+	for(const auto& s : words){
+		cout << s << endl;
+	}
 
 	return 0;
 
 }
 
-bool readFile(string filename, vector<string> v){
+bool readFile(string filename, vector<string>& v){
 	ifstream file(filename);
 
 	if(!file.is_open()){
@@ -42,9 +49,12 @@ bool readFile(string filename, vector<string> v){
 		}
 
 	}
+	/*
+
 	for(string s : v){
 		cout << s << endl;
 	}
+	*/
 
 	file.close();
 	return true;
